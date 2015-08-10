@@ -1,12 +1,13 @@
 package com.vogon101.hexacomb
 
 /**
- * Created by Freddie Poser on 10/08/2015.
+ * Manages interaction with the server in another thread
  */
 abstract class ServerInteractionManager extends Runnable {
 
 }
 
+//TODO: MAKE STATIC
 class OutputManager (var color: Boolean){
 
   val WARN    = "[WARN   ] "
