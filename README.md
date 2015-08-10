@@ -27,9 +27,6 @@ The main way of customizing HexaComb is by providing a `ConnectionManager`. This
 ```scala
 object HexaCombMain extends App{
 
-  //Create an instance of the OutputManager, this is the first thing to be done and is universal
-  val OM = new OutputManager(true)
-
   //Define a custom connection manager
   class CustomConnectionManager(val _c: Socket, val _s: Server, val _OM: OutputManager) extends ConnectionManager(_c, _s, _OM){
     //Override the run method so handle the request
@@ -44,7 +41,9 @@ object HexaCombMain extends App{
   //At every request the builder function is called to provide the right connection manager
   //This can be used to provide a different manager for different types of request
   HexaCombSimple.simpleStart(args) ((socket: Socket, server: Server) => {
-    new CustomConnectionManager(socket,server, OM)
+    //Pass it the socket and the instance of the Server
+    //HexaCombsimple provides an OutputManager
+    new CustomConnectionManager(socket,server, HexaCombSimple.OM)
   })
 
 }
