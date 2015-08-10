@@ -9,7 +9,11 @@ import scala.io.BufferedSource
  * Created by Freddie Poser on 10/08/2015.
  *
  */
-class ConnectionManager(conn: Socket, server: Server, val OM: OutputManager) extends Runnable{
+class ConnectionManager(
+  protected val conn: Socket,
+  protected val server: Server,
+  protected val OM: OutputManager
+) extends Runnable{
 
   val in : BufferedSource = new BufferedSource(conn.getInputStream)
   val out: PrintStream    = new PrintStream(conn.getOutputStream)
