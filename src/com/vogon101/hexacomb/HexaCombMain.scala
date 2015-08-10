@@ -8,9 +8,6 @@ import java.net.Socket
  */
 object HexaCombMain extends App{
 
-  //Create an instance of the OutputManager, this is the first thing to be done and is universal
-  val OM = new OutputManager(true)
-
   //Define a custom connection manager
   class CustomConnectionManager(val _c: Socket, val _s: Server, val _OM: OutputManager) extends ConnectionManager(_c, _s, _OM){
     //Override the run method so handle the request
