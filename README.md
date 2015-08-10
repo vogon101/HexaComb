@@ -22,7 +22,7 @@ This creates a basic echo server and reads in the commandline arguments to provi
   --welcome <Server welcome message> [Welcome to <SERVER NAME>]
 ```
 ###Customisable
-The main way of customizing HexaComb is by providing a `ConnectionManager`. This is where induvidual connections are managed. To create one simply extend the base class `ConnectionManager` and override the `run()` method. Then create a method
+The main way of customizing HexaComb is by providing a `ConnectionManager`. This is where induvidual connections are managed. To create one simply extend the base class `ConnectionManager` and override the `run()` method. Then, when you call `HexaCombSimple.simpleStart(args)(BuilderFunction)` pass it an anonymous function that creates the new `CustomConnectionManager`. This function will be called with every new request to provide the connection handler which will then be run in a new thread to  manage the connection. You can put logic in here to provide a different `ConnectionHandler` for each different type of request
 
 ```scala
 object HexaCombMain extends App{
